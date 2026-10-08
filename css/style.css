@@ -66,9 +66,16 @@ p {
   position: relative;
 }
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: var(--white);
   font-size: 1.4rem;
   font-weight: bold;
+}
+.logo-img {
+  height: 32px;
+  width: auto;
 }
 .nav-links {
   display: flex;
