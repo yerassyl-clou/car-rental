@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | DriveGo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="index">
+
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">DriveGo</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="cars.html">Cars</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li data-auth="user"><a href="profile.html">Profile</a></li>
+        <li data-auth="admin"><a href="admin.html">Admin</a></li>
+        <li data-auth="guest"><a href="login.html">Login</a></li>
+        <li data-auth="user"><a href="#" id="logoutBtn">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Содержимое <main> редактирует ТОЛЬКО владелец страницы -->
+    <h1>Home</h1>
+    <p>Page under construction.</p>
+  </main>
+
+  <footer class="footer">
+    <p><a href="about.html">About</a> | <a href="contact.html">Contact</a></p>
+    <p>&copy; 2026 Student Project</p>
+  </footer>
+
+  <script src="js/seed.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
