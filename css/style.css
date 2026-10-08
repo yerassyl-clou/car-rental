@@ -350,7 +350,8 @@ p {
   .table {
     font-size: 0.85rem;
   }
-  .btn {
+  .form-box .btn,
+  .hero .btn {
     width: 100%;
   }
 }
