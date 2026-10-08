@@ -61,28 +61,6 @@ function requireAdmin() {
   if (!user || user.role !== "admin") window.location.href = "index.html";
 }
 
-// ===== Общие функции валидации и ошибок =====
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-// Показывает ошибку под полем
-function showError(input, message) {
-  input.classList.add("input-error");
-  const el = document.createElement("small");
-  el.className = "error";
-  el.textContent = message;
-  input.insertAdjacentElement("afterend", el);
-}
-
-// Убирает все ошибки в форме (вызывать в начале проверки)
-function clearErrors(form) {
-  form.querySelectorAll(".error").forEach((e) => e.remove());
-  form
-    .querySelectorAll(".input-error")
-    .forEach((e) => e.classList.remove("input-error"));
-}
-
 // ===== Первичная инициализация =====
 function initData() {
   if (!localStorage.getItem("users")) {
