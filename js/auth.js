@@ -171,8 +171,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!valid) return;
 
-    // Поиск пользователя
+    // Нормализация и проверка формата email
     const normalizedEmail = email.value.trim().toLowerCase();
+    if (!isValidEmail(normalizedEmail)) {
+      showError(email, "Please enter a valid email");
+      return;
+    }
+
+    // Поиск пользователя
     const users = getUsers();
     const user = users.find((u) => u.email.toLowerCase() === normalizedEmail);
 
