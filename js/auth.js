@@ -69,13 +69,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isEmpty(email.value)) {
       showError(email, "Email is required");
       valid = false;
-    } else {
-      // 2. Проверка формата email
-      if (!isValidEmail(email.value)) {
+    }
+
+    // Нормализация email
+    const normalizedEmail = email.value.trim().toLowerCase();
+
+    // 2. Проверка формата email
+    if (!isEmpty(email.value)) {
+      if (!isValidEmail(normalizedEmail)) {
         showError(email, "Please enter a valid email");
         valid = false;
       }
     }
+
     if (isEmpty(password.value)) {
       showError(password, "Password is required");
       valid = false;
@@ -106,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!valid) return;
 
     // 5. Проверка уникальности email
-    const normalizedEmail = email.value.trim().toLowerCase();
     const users = getUsers();
     const emailExists = users.some(
       (u) => u.email.toLowerCase() === normalizedEmail
