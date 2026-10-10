@@ -138,3 +138,58 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "index.html";
   });
 });
+
+// ===== Вход =====
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("loginForm");
+  if (!form) return; // Форма есть только на login.html
+
+  // Если пользователь уже вошёл, перенаправить на главную
+  if (getCurrentUser()) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    clearErrors(form);
+
+    const email = document.getElementById("loginEmail");
+    const password = document.getElementById("loginPassword");
+
+    let valid = true;
+
+    // Проверка пустых полей
+    if (isEmpty(email.value)) {
+      showError(email, "Email is required");
+      valid = false;
+    }
+    if (isEmpty(password.value)) {
+      showError(password, "Password is required");
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    // Поиск пользователя
+    const normalizedEmail = email.value.trim().toLowerCase();
+    const users = getUsers();
+    const user = users.find((u) => u.email.toLowerCase() === normalizedEmail);
+
+    // Проверка существования пользователя
+    if (!user) {
+      showError(email, "User with this email does not exist");
+      return;
+    }
+
+    // Проверка пароля
+    if (user.password !== password.value) {
+      showError(password, "Incorrect password");
+      return;
+    }
+
+    // Успешный вход
+    setSession(user.id);
+    window.location.href = "index.html";
+  });
+});
