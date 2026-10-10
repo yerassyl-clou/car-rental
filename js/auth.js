@@ -193,3 +193,53 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "index.html";
   });
 });
+
+// ===== Форма обратной связи (Contact) =====
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  if (!form) return; // Форма есть только на contact.html
+
+  const successMsg = document.getElementById("contactSuccess");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    clearErrors(form);
+
+    const name = document.getElementById("contactName");
+    const email = document.getElementById("contactEmail");
+    const message = document.getElementById("contactMessage");
+
+    let valid = true;
+
+    // Проверка обязательных полей
+    if (isEmpty(name.value)) {
+      showError(name, "Name is required");
+      valid = false;
+    }
+    if (isEmpty(email.value)) {
+      showError(email, "Email is required");
+      valid = false;
+    } else {
+      // Проверка формата email
+      if (!isValidEmail(email.value)) {
+        showError(email, "Please enter a valid email");
+        valid = false;
+      }
+    }
+    if (isEmpty(message.value)) {
+      showError(message, "Message is required");
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    // Показываем сообщение об успехе (данные не сохраняются)
+    successMsg.style.display = "block";
+    form.reset();
+
+    // Скрываем сообщение через 5 секунд
+    setTimeout(() => {
+      successMsg.style.display = "none";
+    }, 5000);
+  });
+});
