@@ -1,0 +1,169 @@
+/* ===== Стили админки и профиля (admin.html, profile.html) ===== */
+/* Подключается после style.css, использует его переменные */
+
+/* .btn задаёт display, поэтому атрибут hidden нужно усилить */
+[hidden] {
+  display: none !important;
+}
+
+/* body во flex-колонке, а margin: auto отключает растягивание main,
+   поэтому широкие таблицы раздвигали страницу на телефоне */
+main.container {
+  width: 100%;
+}
+
+/* ===== Секции ===== */
+.admin-section {
+  margin-top: 40px;
+}
+.admin-section h2 {
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 16px;
+}
+.empty-text {
+  background: var(--white);
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--gray);
+}
+
+/* ===== Счётчики (Dashboard) ===== */
+.admin-stats {
+  margin-top: 16px;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 4px solid var(--primary);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.stat-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+.stat-value {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: var(--primary);
+  line-height: 1.2;
+}
+.stat-label {
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+/* ===== Форма в карточке ===== */
+.admin-panel-box {
+  background: var(--white);
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0 20px;
+}
+.admin-form-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+textarea.form-input {
+  resize: vertical;
+}
+
+/* ===== Таблицы ===== */
+.table td {
+  vertical-align: middle;
+}
+.table-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.btn-small {
+  padding: 6px 12px;
+  font-size: 0.875rem;
+}
+.status-select {
+  width: auto;
+  min-width: 120px;
+  padding: 6px 8px;
+}
+
+/* ===== Бейджи статуса брони ===== */
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--white);
+}
+.status-pending {
+  background: var(--warning);
+}
+.status-confirmed {
+  background: var(--success);
+}
+.status-cancelled {
+  background: var(--danger);
+}
+
+/* ===== Профиль ===== */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: var(--white);
+  padding: 28px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.avatar {
+  flex-shrink: 0;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--dark));
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+.profile-info h2 {
+  margin-bottom: 8px;
+}
+.profile-details {
+  list-style: none;
+  margin-bottom: 16px;
+}
+.profile-details li {
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+
+/* ===== Адаптивность ===== */
+@media (max-width: 600px) {
+  .profile-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  .admin-panel-box {
+    padding: 18px;
+  }
+  .admin-form-actions .btn {
+    flex: 1;
+  }
+}
