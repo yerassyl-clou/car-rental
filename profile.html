@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Profile | DriveGo</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
   <link rel="icon" href="images/logo.svg">
 </head>
 <body data-page="profile">
@@ -29,7 +30,67 @@
   <main class="container">
     <!-- Содержимое <main> редактирует ТОЛЬКО владелец страницы -->
     <h1>My Profile</h1>
-    <p>Page under construction.</p>
+
+    <!-- Просмотр профиля -->
+    <section class="profile-card">
+      <div class="avatar" id="profileAvatar" aria-hidden="true"></div>
+      <div class="profile-info">
+        <h2 id="profileName"></h2>
+        <ul class="profile-details">
+          <li><strong>Email:</strong> <span id="profileEmail"></span></li>
+          <li><strong>Phone:</strong> <span id="profilePhone"></span></li>
+          <li><strong>Role:</strong> <span id="profileRole"></span></li>
+        </ul>
+        <button type="button" class="btn btn-primary" id="editProfileBtn">Edit Profile</button>
+      </div>
+    </section>
+
+    <p class="success" id="profileMessage" hidden></p>
+
+    <!-- Редактирование профиля -->
+    <section class="admin-panel-box" id="editProfileBox" hidden>
+      <h3>Edit Profile</h3>
+      <form id="profileForm" novalidate>
+        <div class="admin-form-grid">
+          <div class="form-group">
+            <label for="editFirstName">First Name</label>
+            <input type="text" id="editFirstName" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="editLastName">Last Name</label>
+            <input type="text" id="editLastName" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="editPhone">Phone (optional)</label>
+            <input type="tel" id="editPhone" class="form-input" placeholder="+77011234567">
+          </div>
+        </div>
+        <div class="admin-form-actions">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- История броней -->
+    <section class="admin-section">
+      <h2>My Bookings</h2>
+      <p class="empty-text" id="noBookings" hidden>No bookings yet. <a href="cars.html">Browse cars</a></p>
+      <div class="table-wrapper" id="bookingsTableWrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Car</th>
+              <th>Pickup</th>
+              <th>Return</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="bookingsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">

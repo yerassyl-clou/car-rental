@@ -29,6 +29,50 @@ Web Programming midterm project built with HTML, CSS, and JavaScript. The applic
 | `about.html` | Project information |
 | `contact.html` | Contact form |
 
+## Features
+
+- **Registration and login** with validation (required fields, email format, password length, password confirmation, unique email).
+- **Home page** with a call-to-action and navigation that adapts to the user's role (guest / user / admin).
+- **Car catalog** with search and category/price filters.
+- **Car details** page with features, price, and a Book Now button.
+- **Booking form** with date validation and a confirmation page.
+- **User profile**: personal information, Edit Profile (first name, last name, phone) with validation, and booking history with statuses.
+- **Admin panel**: dashboard counters, users table, full CRUD for cars (add, edit, delete with confirmation), bookings table with status change (Pending / Confirmed / Cancelled).
+- **Responsive design**: burger menu below 900px, wide tables scroll horizontally on small screens.
+
+## Project Structure
+
+```text
+car-rental/
+├── index.html            # Home page
+├── cars.html             # Catalog, search, filters
+├── car-details.html      # Car details
+├── booking.html          # Booking form
+├── confirmation.html     # Booking confirmation
+├── login.html            # Login
+├── register.html         # Registration
+├── profile.html          # User profile and booking history
+├── admin.html            # Admin panel
+├── about.html            # About the project
+├── contact.html          # Contact form
+├── css/
+│   ├── style.css         # Shared styles for the whole site
+│   └── admin.css         # Admin panel and profile styles
+├── js/
+│   ├── seed.js           # Initial car data (SEED_CARS)
+│   ├── storage.js        # localStorage data and session functions
+│   ├── validation.js     # Validation and error display helpers
+│   ├── auth.js           # Navbar, burger menu, logout, register/login/contact forms
+│   ├── main.js           # Catalog and booking pages
+│   ├── admin.js          # Admin panel
+│   └── profile.js        # User profile
+├── images/
+│   ├── logo.svg
+│   └── cars/             # Car photos
+├── TESTING_GUIDE.md
+└── README.md
+```
+
 ## Shared Data Contract
 
 All pages must use the shared functions in `js/storage.js` to read and save data. Do not access the `users`, `cars`, or `bookings` localStorage keys directly from page scripts.
@@ -105,8 +149,8 @@ Use these functions from `js/storage.js` to manage the session:
 
 ## Team
 
-| Member | Responsibility |
-|---|---|
-| Yerassyl | Authentication, project foundation, shared styles |
-| Danaya | Car catalog, seed data, and booking |
-| Sabit | Admin panel, user profile, and README maintenance |
+| Member | Responsibility | Pages and files |
+|---|---|---|
+| Yerassyl | Authentication, project foundation, shared styles | `login.html`, `register.html`, `about.html`, `contact.html`, `css/style.css`, `js/storage.js`, `js/validation.js`, `js/auth.js`, `images/logo.svg` |
+| Danaya | Car catalog, seed data, and booking | `index.html`, `cars.html`, `car-details.html`, `booking.html`, `confirmation.html`, `js/seed.js`, `js/main.js`, `images/cars/` |
+| Sabit | Admin panel, user profile, and README maintenance | `admin.html`, `profile.html`, `js/admin.js`, `js/profile.js`, `css/admin.css`, `README.md` |

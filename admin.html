@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel | DriveGo</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
   <link rel="icon" href="images/logo.svg">
 </head>
 <body data-page="admin">
@@ -29,7 +30,135 @@
   <main class="container">
     <!-- Содержимое <main> редактирует ТОЛЬКО владелец страницы -->
     <h1>Admin Panel</h1>
-    <p>Page under construction.</p>
+
+    <!-- Dashboard: счётчики -->
+    <section class="features admin-stats" aria-label="Dashboard">
+      <div class="feature-item stat-item">
+        <span class="stat-value" id="statUsers">0</span>
+        <span class="stat-label">Users</span>
+      </div>
+      <div class="feature-item stat-item">
+        <span class="stat-value" id="statCars">0</span>
+        <span class="stat-label">Cars</span>
+      </div>
+      <div class="feature-item stat-item">
+        <span class="stat-value" id="statBookings">0</span>
+        <span class="stat-label">Bookings</span>
+      </div>
+    </section>
+
+    <!-- Пользователи -->
+    <section class="admin-section" id="usersSection">
+      <h2>Users</h2>
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody id="usersTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Машины (CRUD) -->
+    <section class="admin-section" id="carsSection">
+      <h2>Cars</h2>
+
+      <div class="admin-panel-box">
+        <h3 id="carFormTitle">Add Car</h3>
+        <form id="carForm" novalidate>
+          <input type="hidden" id="carId">
+          <div class="admin-form-grid">
+            <div class="form-group">
+              <label for="carName">Name</label>
+              <input type="text" id="carName" class="form-input" placeholder="Toyota Camry">
+            </div>
+            <div class="form-group">
+              <label for="carCategory">Category</label>
+              <select id="carCategory" class="form-input">
+                <option value="">Select category</option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+                <option value="Hatchback">Hatchback</option>
+                <option value="Minivan">Minivan</option>
+                <option value="Sports">Sports</option>
+                <option value="Electric">Electric</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="carPrice">Price per day ($)</label>
+              <input type="number" id="carPrice" class="form-input" min="1" step="1" placeholder="50">
+            </div>
+            <div class="form-group">
+              <label for="carSeats">Seats</label>
+              <input type="number" id="carSeats" class="form-input" min="1" step="1" placeholder="5">
+            </div>
+            <div class="form-group">
+              <label for="carImage">Image path</label>
+              <input type="text" id="carImage" class="form-input" placeholder="images/cars/camry.jpg">
+            </div>
+            <div class="form-group">
+              <label for="carFeatures">Features (comma separated, optional)</label>
+              <input type="text" id="carFeatures" class="form-input" placeholder="Automatic, Air conditioning, Bluetooth">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="carDescription">Description</label>
+            <textarea id="carDescription" class="form-input" rows="3" placeholder="Short description of the car"></textarea>
+          </div>
+          <div class="admin-form-actions">
+            <button type="submit" class="btn btn-primary" id="carSubmitBtn">Add Car</button>
+            <button type="button" class="btn btn-secondary" id="carCancelBtn" hidden>Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <p class="success" id="carMessage" hidden></p>
+
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price / day</th>
+              <th>Seats</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="carsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Брони -->
+    <section class="admin-section" id="bookingsSection">
+      <h2>Bookings</h2>
+      <p class="success" id="bookingMessage" hidden></p>
+      <p class="empty-text" id="noBookings" hidden>No bookings yet</p>
+      <div class="table-wrapper" id="bookingsTableWrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User</th>
+              <th>Car</th>
+              <th>Pickup</th>
+              <th>Return</th>
+              <th>Status</th>
+              <th>Change status</th>
+            </tr>
+          </thead>
+          <tbody id="bookingsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
