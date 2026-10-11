@@ -1,4 +1,5 @@
-/* Catalog and booking pages */
+/* Стили страниц каталога и бронирования */
+/* Небольшие подписи над заголовками и оформление главного баннера. */
 .hero-kicker,
 .eyebrow {
   color: var(--primary);
@@ -18,6 +19,7 @@
 .feature-icon { color: var(--primary); display: block; font-size: 1.8rem; font-weight: bold; margin-bottom: 8px; }
 .welcome-message { background: #dbeafe; border-left: 4px solid var(--primary); border-radius: var(--radius); margin-bottom: 28px; padding: 12px 16px; }
 
+/* Вступительный текст каталога, панель фильтров и подписи карточек. */
 .page-intro { margin: 10px 0 24px; max-width: 650px; }
 .page-intro h1 { font-size: 2rem; }
 .filter-bar { align-items: end; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; padding: 16px; }
@@ -31,6 +33,7 @@
 .empty-state, .info-panel { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); margin: 36px auto; max-width: 680px; padding: 32px; text-align: center; }
 .empty-state p, .info-panel p { color: var(--gray); }
 
+/* Раскладка страницы машины: изображение, описание, характеристики и цена. */
 .details-layout { align-items: start; display: grid; gap: 28px; grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr); padding: 20px 0; }
 .details-image { background: #e5e7eb; border-radius: var(--radius); box-shadow: var(--shadow); height: 360px; object-fit: cover; width: 100%; }
 .details-content { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px; }
@@ -41,6 +44,7 @@
 .features-list li::before { color: var(--success); content: "✓"; font-weight: bold; margin-right: 9px; }
 .details-price { font-size: 1.2rem; margin: 18px 0; }
 
+/* Блок сведений о машине и форма создания брони. */
 .booking-layout { display: grid; gap: 24px; grid-template-columns: minmax(220px, 0.8fr) minmax(300px, 1.2fr); margin: 22px 0; }
 .booking-summary { align-self: start; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; }
 .booking-summary img { border-radius: 6px; height: 160px; margin-bottom: 16px; object-fit: cover; width: 100%; }
@@ -55,11 +59,13 @@
 .status-badge { background: #fff3cd; border-radius: 999px; color: #856404; display: inline-block; font-size: 0.85rem; font-weight: bold; padding: 3px 10px; }
 .sr-only { height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; clip: rect(0, 0, 0, 0); white-space: nowrap; }
 
+/* На планшетах изображение и содержимое располагаются друг под другом. */
 @media (max-width: 768px) {
   .details-layout, .booking-layout { grid-template-columns: 1fr; }
   .details-image { height: 280px; }
 }
 
+/* На телефонах фильтры и кнопки занимают доступную ширину. */
 @media (max-width: 480px) {
   .section-heading, .card-actions { align-items: stretch; flex-direction: column; }
   .card-actions .btn { width: 100%; }

@@ -1,3 +1,4 @@
+// Создаёт HTML-элемент, задаёт ему класс и безопасно добавляет текст.
 function createElement(tag, className, text) {
   const element = document.createElement(tag);
   if (className) element.className = className;
@@ -5,6 +6,7 @@ function createElement(tag, className, text) {
   return element;
 }
 
+// Создаёт изображение машины. Если фото не загрузилось, вместо него покажется логотип.
 function createCarImage(car, className) {
   const image = document.createElement("img");
   image.className = className;
@@ -16,10 +18,12 @@ function createCarImage(car, className) {
   return image;
 }
 
+// Показывает рейтинг машины или подпись, если рейтинг ещё не задан.
 function formatRating(rating) {
   return Number(rating) > 0 ? `★ ${Number(rating).toFixed(1)}` : "No rating";
 }
 
+// Показывает информационный блок и, при необходимости, кнопку-ссылку.
 function showNotice(container, title, message, linkHref, linkText) {
   const panel = createElement("section", "info-panel");
   panel.append(createElement("h1", "", title), createElement("p", "", message));
@@ -31,6 +35,7 @@ function showNotice(container, title, message, linkHref, linkText) {
   container.replaceChildren(panel);
 }
 
+// На главной странице приветствует пользователя, если он вошёл в аккаунт.
 function initHomePage() {
   const welcome = document.getElementById("welcomeMessage");
   const user = getCurrentUser();
@@ -39,6 +44,7 @@ function initHomePage() {
   welcome.hidden = false;
 }
 
+// Строит карточки машин для каталога или показывает сообщение, если результатов нет.
 function renderCars(cars) {
   const grid = document.getElementById("carsGrid");
   const count = document.getElementById("resultsCount");
@@ -68,6 +74,7 @@ function renderCars(cars) {
   });
 }
 
+// Настраивает поиск и фильтры каталога и обновляет список при изменении полей.
 function initCarsPage() {
   const search = document.getElementById("searchInput");
   const category = document.getElementById("categoryFilter");
@@ -98,6 +105,7 @@ function initCarsPage() {
   applyFilters();
 }
 
+// Находит машину по параметру id в адресе и выводит её описание и характеристики.
 function initCarDetailsPage() {
   const container = document.getElementById("carDetails");
   if (!container) return;
@@ -122,17 +130,20 @@ function initCarDetailsPage() {
   container.replaceChildren(layout);
 }
 
+// Возвращает сегодняшнюю дату по местному времени в формате ГГГГ-ММ-ДД.
 function todayLocal() {
   const date = new Date();
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
 
+// Считает количество дней аренды и примерную стоимость выбранных дат.
 function calculateTotal(car, pickup, returnDate) {
   if (!pickup || !returnDate || returnDate <= pickup) return null;
   const days = Math.round((new Date(`${returnDate}T00:00:00`) - new Date(`${pickup}T00:00:00`)) / 86400000);
   return { days, total: days * Number(car.pricePerDay) };
 }
 
+// Проверяет вход пользователя, показывает форму и сохраняет новую бронь.
 function initBookingPage() {
   requireLogin();
   const user = getCurrentUser();
@@ -171,12 +182,14 @@ function initBookingPage() {
   layout.append(summary, form);
   container.replaceChildren(title, layout);
 
+  // Пересчитывает примерную стоимость при изменении даты получения или возврата.
   const updateEstimate = () => {
     const estimateData = calculateTotal(car, pickup.value, returnDate.value);
     estimate.textContent = estimateData ? `${estimateData.days} day${estimateData.days === 1 ? "" : "s"} · Estimated total: $${estimateData.total}` : "Choose dates to see your estimate.";
   };
   pickup.addEventListener("input", updateEstimate);
   returnDate.addEventListener("input", updateEstimate);
+  // Проверяет даты, сохраняет бронь и открывает страницу подтверждения.
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     clearErrors(form);
@@ -195,6 +208,7 @@ function initBookingPage() {
   });
 }
 
+// Проверяет доступ к брони и показывает её данные на странице подтверждения.
 function initConfirmationPage() {
   requireLogin();
   const user = getCurrentUser();
@@ -220,6 +234,7 @@ function initConfirmationPage() {
   container.replaceChildren(card);
 }
 
+// Запускает только ту логику, которая относится к текущей странице сайта.
 document.addEventListener("DOMContentLoaded", () => {
   const page = document.body.dataset.page;
   if (page === "index") initHomePage();
