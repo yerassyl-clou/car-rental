@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home | DriveGo</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/catalog.css">
   <link rel="icon" href="images/logo.svg">
 </head>
 <body data-page="index">
@@ -27,9 +28,40 @@
   </header>
 
   <main>
-    <!-- Содержимое <main> редактирует ТОЛЬКО владелец страницы -->
-    <h1>Home</h1>
-    <p>Page under construction.</p>
+    <section class="hero">
+      <p class="hero-kicker">Simple car rental, wherever you are</p>
+      <h1>Find the right car for every journey</h1>
+      <p>Browse reliable cars, compare options, and reserve your next ride in a few easy steps.</p>
+      <a class="btn btn-primary" href="cars.html">Explore cars</a>
+    </section>
+
+    <section class="container home-content">
+      <div id="welcomeMessage" class="welcome-message" hidden></div>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Why DriveGo</p>
+          <h2>Everything you need to get moving</h2>
+        </div>
+        <a href="cars.html">View all cars →</a>
+      </div>
+      <div class="features">
+        <article class="feature-item">
+          <span class="feature-icon">⌕</span>
+          <h3>Easy to compare</h3>
+          <p>Search by name, category, and daily budget to find a car that fits your plan.</p>
+        </article>
+        <article class="feature-item">
+          <span class="feature-icon">✓</span>
+          <h3>Clear booking</h3>
+          <p>Choose your pickup and return dates, add a note, and receive an instant confirmation.</p>
+        </article>
+        <article class="feature-item">
+          <span class="feature-icon">★</span>
+          <h3>Cars you can trust</h3>
+          <p>Explore a range of comfortable, practical cars for city breaks and longer trips.</p>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">

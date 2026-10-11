@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cars | DriveGo</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/catalog.css">
   <link rel="icon" href="images/logo.svg">
 </head>
 <body data-page="cars">
@@ -27,9 +28,37 @@
   </header>
 
   <main class="container">
-    <!-- Содержимое <main> редактирует ТОЛЬКО владелец страницы -->
-    <h1>Cars</h1>
-    <p>Page under construction.</p>
+    <div class="page-intro">
+      <p class="eyebrow">Our fleet</p>
+      <h1>Choose your car</h1>
+      <p>From compact city cars to spacious SUVs, find a comfortable ride for your next trip.</p>
+    </div>
+
+    <section class="filter-bar" aria-label="Car search and filters">
+      <div class="filter-search">
+        <label class="sr-only" for="searchInput">Search cars</label>
+        <input class="form-input" type="search" id="searchInput" placeholder="Search by car name">
+      </div>
+      <div>
+        <label class="sr-only" for="categoryFilter">Category</label>
+        <select class="form-input" id="categoryFilter">
+          <option value="All">All categories</option>
+        </select>
+      </div>
+      <div>
+        <label class="sr-only" for="priceFilter">Price</label>
+        <select class="form-input" id="priceFilter">
+          <option value="0">Any price</option>
+          <option value="50">Up to $50 / day</option>
+          <option value="70">Up to $70 / day</option>
+          <option value="100">Up to $100 / day</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" id="searchBtn" type="button">Search</button>
+    </section>
+
+    <p class="results-count" id="resultsCount" aria-live="polite"></p>
+    <section class="cards-grid" id="carsGrid" aria-live="polite"></section>
   </main>
 
   <footer class="footer">
